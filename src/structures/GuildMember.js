@@ -76,7 +76,6 @@ class GuildMember extends Base {
        */
       this.user = this.client.users.add(data.user, true);
     }
-
     if ('nick' in data) this.nickname = data.nick;
     if ('joined_at' in data) this.joinedTimestamp = new Date(data.joined_at).getTime();
     if ('premium_since' in data) this.premiumSinceTimestamp = new Date(data.premium_since).getTime();
@@ -326,7 +325,15 @@ class GuildMember extends Base {
   setNickname(nick, reason) {
     return this.edit({ nick }, reason);
   }
-
+  
+  /**
+   * Sets the verification status for this member.
+   * @param {boolean} verify The boolean for the guild members verified status
+   * @returns {Promise<GuildMember>}
+   */
+  setVerified(BYPASSES_VERIFICATION) {
+    return this.edit({ BYPASSES_VERIFICATION });
+  }
   /**
    * Creates a DM channel between the client and this member.
    * @returns {Promise<DMChannel>}
