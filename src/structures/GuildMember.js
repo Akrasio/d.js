@@ -331,8 +331,8 @@ class GuildMember extends Base {
    * @param {boolean} verify The boolean for the guild members verified status
    * @returns {Promise<GuildMember>}
    */
-  setVerified(BYPASSES_VERIFICATION) {
-    return this.edit({ BYPASSES_VERIFICATION });
+  setVerified(verify) {
+    return this.edit({ bypasses_verification: verify });
   }
   /**
    * Creates a DM channel between the client and this member.
